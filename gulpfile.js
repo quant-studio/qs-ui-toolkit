@@ -22,6 +22,16 @@ gulp.task('less', function () {
     .pipe(gulp.dest('dist'))
 })
 
+
+gulp.task('backtester', function () {
+  return gulp.src('./less/toolkit*')
+    .pipe(sourcemaps.init())
+    .pipe(less())
+    .pipe(autoprefixer())
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('../qs-app-backtester/public/css'))
+})
+
 gulp.task('less-min', ['less'], function () {
   return gulp.src('./less/toolkit*')
     .pipe(sourcemaps.init())
